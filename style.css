@@ -36,11 +36,11 @@ header h1 {
 
 /* 🔥 Animated Glowing Form Container */
 #contact-form {
-  max-width: 600px;
-  margin: 30px auto;
+  max-width: 750px;
+  margin: 22px auto;
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 14px;
   background: #1e1e1e;
   padding: 20px;
   border-radius: 15px;
@@ -62,8 +62,8 @@ header h1 {
 #contact-form input,
 #contact-form textarea,
 #contact-form select {
-  padding: 16px;
-  border-radius: 12px;
+  padding: 12px;
+  border-radius: 8px;
   border: 1px solid #333;
   background-color: #1f1f1f;
   color: #f0f0f0;
@@ -71,11 +71,11 @@ header h1 {
 }
 
 #contact-form button {
-  padding: 14px;
+  padding: 12px;
   border: none;
   background-color: #42a5f5;
   color: white;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
 }
