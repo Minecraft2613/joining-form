@@ -11,7 +11,6 @@ body {
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.6;
   padding: 20px;
-  scroll-behavior: smooth;
 }
 
 /* Header */
@@ -35,6 +34,51 @@ header h1 {
   50% { text-shadow: 0 0 20px #00ffe1, 0 0 30px #00ffe1; }
 }
 
+/* Contact Form */
+#contact-form {
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px #00ffcc;
+  border: 1px solid #00ffcc;
+}
+
+#contact-form input,
+#contact-form textarea,
+#contact-form select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background-color: #1f1f1f;
+  color: #f0f0f0;
+  width: 100%;
+}
+
+#contact-form button {
+  padding: 10px;
+  border: none;
+  background-color: #42a5f5;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#contact-form button:hover {
+  background-color: #2196f3;
+}
+
+#contact-status {
+  text-align: center;
+  margin-top: 10px;
+  color: #42f56c;
+}
+
 /* Nav */
 nav {
   margin-top: 10px;
@@ -52,13 +96,6 @@ nav a:hover {
   color: #00ffe1;
 }
 
-@media (max-width: 600px) {
-  nav a {
-    display: block;
-    margin: 10px 0;
-  }
-}
-
 /* Sections */
 section {
   background: #1e1e1e;
@@ -66,62 +103,11 @@ section {
   padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-  transition: transform 0.3s ease;
-}
-
-section:hover {
-  transform: scale(1.01);
 }
 
 h2 {
   color: #00ffe1;
   margin-bottom: 10px;
-}
-
-/* Form Styling */
-#contact-form {
-  max-width: 750px;
-  margin: 30px auto;
-  background: #000;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px #00ffe1;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-#contact-form input,
-#contact-form textarea,
-#contact-form select {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background-color: #1f1f1f;
-  color: #f0f0f0;
-  font-size: 1rem;
-}
-
-#contact-form button {
-  padding: 12px;
-  border: none;
-  background-color: #42a5f5;
-  color: white;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s;
-}
-
-#contact-form button:hover {
-  background-color: #2196f3;
-}
-
-#contact-status {
-  text-align: center;
-  margin-top: 10px;
-  color: #42f56c;
-  font-weight: bold;
 }
 
 /* Plugin List */
@@ -142,7 +128,7 @@ li:hover {
   background: #383838;
 }
 
-/* Buttons & Input */
+/* Copy Button & Input */
 button {
   background-color: #00ffe1;
   color: #000;
@@ -167,45 +153,6 @@ input[type="text"] {
   padding: 8px;
 }
 
-/* Toggle Theme Button */
-.toggle-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  padding: 6px 12px;
-  background-color: #444;
-  color: #fff;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-/* Plugin Search */
-#plugin-search {
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #333;
-  background-color: #1f1f1f;
-  color: #f0f0f0;
-}
-
-/* Login */
-#login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  max-width: 300px;
-  margin: 50px auto;
-}
-#login-section {
-  text-align: center;
-}
-#main-content {
-  display: none;
-}
-
 /* Footer */
 footer {
   text-align: center;
@@ -214,20 +161,22 @@ footer {
   color: #999;
 }
 
-/* Status Section */
+/* Link Styles */
+a {
+  color: #00ccff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Status Section Highlight */
 #server-status {
   font-size: 1.2rem;
   margin-top: 8px;
 }
+
 #start-link a {
   color: #00ffcc;
   font-weight: bold;
-}
-
-/* Link */
-a {
-  color: #00ccff;
-}
-a:hover {
-  text-decoration: underline;
 }
