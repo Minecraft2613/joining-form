@@ -4,93 +4,102 @@
   <meta charset="UTF-8">
   <title>Minecraft Joining Bonus</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      background: linear-gradient(-45deg, #1e1e1e, #292929, #1b1b1b, #121212);
-      background-size: 400% 400%;
-      animation: gradientBG 10s ease infinite;
-      padding: 30px;
-    }
+   body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: linear-gradient(-45deg, #1e1e1e, #292929, #1b1b1b, #121212);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
+  padding: 30px;
+}
 
-    @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
-    }
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
 
-    .infoBox, form {
-      max-width: 600px;
-      margin: auto;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 0 15px #00ffcc;
-      margin-bottom: 30px;
-    }
+.infoBox, form {
+  max-width: 600px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #00ffcc;
+  margin-bottom: 30px;
+}
 
-    h2 {
-      text-align: center;
-      color: #00ffcc;
-    }
+h2 {
+  text-align: center;
+  color: #00ffcc;
+}
 
-    input, select, button, label {
-      width: 100%;
-      margin-bottom: 15px;
-      padding: 10px;
-      border-radius: 6px;
-      border: none;
-      font-size: 14px;
-    }
+input, select, button {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  font-size: 14px;
+}
 
-    input[type="radio"] {
-      width: auto;
-      margin-right: 8px;
-      transform: scale(1.2);
-    }
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 15px;
+}
 
-    button {
-      background-color: #00aa00;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+input[type="radio"] {
+  width: auto;
+  margin-right: 8px;
+  transform: scale(1.2);
+}
 
-    button:hover {
-      background-color: #008000;
-    }
+button {
+  background-color: #00aa00;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    .radio-group {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-    }
+button:hover {
+  background-color: #008000;
+}
 
-    a {
-      color: #00ffcc;
-      text-decoration: underline;
-    }
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 15px;
+}
 
-    .hidden {
-      display: none;
-    }
+a {
+  color: #00ffcc;
+  text-decoration: underline;
+}
 
-    #warningBox {
-      display: none;
-      color: #ff4444;
-      background-color: #2a0000;
-      padding: 10px;
-      border-left: 4px solid red;
-      margin-bottom: 15px;
-      border-radius: 5px;
-    }
+.hidden {
+  display: none;
+}
 
-    .infoBox h3 {
-      color: #00ffcc;
-      border-bottom: 1px solid #00ffcc;
-      padding-bottom: 5px;
-    }
+#warningBox {
+  display: none;
+  color: #ff4444;
+  background-color: #2a0000;
+  padding: 10px;
+  border-left: 4px solid red;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.infoBox h3 {
+  color: #00ffcc;
+  border-bottom: 1px solid #00ffcc;
+  padding-bottom: 5px;
+}
+
 @media (max-width: 600px) {
   body {
     padding: 15px;
@@ -101,13 +110,19 @@
     box-shadow: 0 0 10px #00ffcc;
   }
 
-  input, select, button, label {
+  input, select, button {
     font-size: 16px;
     padding: 12px;
   }
 
+  label {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+
   .radio-group {
     flex-direction: column;
+    align-items: flex-start;
     gap: 10px;
   }
 
@@ -116,7 +131,7 @@
   }
 
   a {
-    word-break: break-all;
+    word-break: break-word;
   }
 }
 
