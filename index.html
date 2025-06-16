@@ -20,13 +20,14 @@
       100% {background-position: 0% 50%;}
     }
 
-    form {
+    .infoBox, form {
       max-width: 600px;
       margin: auto;
       background: rgba(0, 0, 0, 0.6);
       padding: 25px;
       border-radius: 10px;
       box-shadow: 0 0 15px #00ffcc;
+      margin-bottom: 30px;
     }
 
     h2 {
@@ -75,12 +76,51 @@
       display: none;
     }
 
+    #warningBox {
+      display: none;
+      color: #ff4444;
+      background-color: #2a0000;
+      padding: 10px;
+      border-left: 4px solid red;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+
+    .infoBox h3 {
+      color: #00ffcc;
+      border-bottom: 1px solid #00ffcc;
+      padding-bottom: 5px;
+    }
+
   </style>
 </head>
 <body>
 
+  <div class="infoBox">
+    <h2>🎁 Minecraft Joining Bonus Info</h2>
+    <h3>Hello,</h3>
+    <p>Dear user, this form is for when you join our server (or plan to join soon). After filling this form, you will receive bonus money in-game.</p>
+    <p><strong>The total amount you will get is 25k$ (excluding tax)</strong></p>
+
+    <h3>Requirements</h3>
+    <ol>
+      <li>You must join the Minecraft server within <strong>24 hours</strong> after filling this form.</li>
+      <li>You must <strong>follow the server rules</strong>.</li>
+      <li>You must play for at least <strong>5 days</strong> to receive the full bonus.</li>
+    </ol>
+
+    <h3>How Do You Get the Bonus?</h3>
+    <ul>
+      <li>🟢 After submitting the form and joining the server: <strong>6k$</strong></li>
+      <li>🕒 After 48 hours (2 days): <strong>8k$</strong></li>
+      <li>🕒 After another 48 hours: <strong>12k$</strong></li>
+      <li>⚠️ If payment is not made in time, you will receive <strong>30k$</strong> as a fine (paid by the Form Manager).</li>
+    </ul>
+    <p>✅ Have a good day and enjoy our Minecraft server!</p>
+  </div>
+
   <form id="bonusForm">
-    <h2>🎁 Minecraft Joining Bonus</h2>
+    <h2>📝 Fill the Form Below</h2>
 
     <input type="text" id="freemcuser" placeholder="FreeMcServer Username" required />
     <input type="text" id="name" placeholder="Your Name" required />
@@ -111,24 +151,31 @@
       <input type="number" id="balance" placeholder="In-game money" />
     </div>
 
-    <label class="rules-label">
+    <label>
       📜 Do you agree to the 
       <a href="https://minecraft2613.github.io/Minecarft-2613-Rules/" target="_blank">Minecraft Rules?</a>?
     </label>
 
     <div class="radio-group">
-      <label><input type="radio" name="acceptRules" value="Yes" required> Yes</label>
-      <label><input type="radio" name="acceptRules" value="No"> No</label>
+      <label><input type="radio" name="acceptRules" value="Yes" required onchange="checkRules()"> Yes</label>
+      <label><input type="radio" name="acceptRules" value="No" onchange="checkRules()"> No</label>
     </div>
+
+    <div id="warningBox">⚠️ If you do not agree with the rules, no joining bonus will be given.</div>
 
     <button type="submit">Submit</button>
   </form>
 
   <script>
-    const webhookURL = "https://discordapp.com/api/webhooks/1384175324908093600/exW16D_efWe-KA20FdZDE6aOhKnq1AYuiCITMN4-DD3_KhUOWUIB-9RZpp04_-6P__fa"; // Replace with your webhook
+    const webhookURL = "YOUR_DISCORD_WEBHOOK_URL"; // Replace with your actual webhook URL
 
     function toggleJoinDetails(show) {
       document.getElementById("joinDetails").classList.toggle("hidden", !show);
+    }
+
+    function checkRules() {
+      const accepted = document.querySelector('input[name="acceptRules"]:checked').value;
+      document.getElementById("warningBox").style.display = (accepted === "No") ? "block" : "none";
     }
 
     document.getElementById("bonusForm").addEventListener("submit", function(e) {
@@ -166,9 +213,8 @@
       })
       .then(res => {
         if (res.ok) {
-          alert("✅ Form submitted successfully!");
-          document.getElementById("bonusForm").reset();
-          toggleJoinDetails(false);
+         window.location.href = "https://minecraft2613.github.io/Minecraft-details/";
+
         } else {
           alert("❌ Error sending data.");
         }
