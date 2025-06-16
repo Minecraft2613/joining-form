@@ -213,6 +213,7 @@
       })
       .then(res => {
         if (res.ok) {
+        localStorage.setItem("formSuccess", "yes");
          window.location.href = "https://minecraft2613.github.io/Minecraft-details/";
 
         } else {
