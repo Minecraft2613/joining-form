@@ -4,111 +4,52 @@
   <meta charset="UTF-8">
   <title>Minecraft Joining Bonus</title>
   <style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  color: white;
-  background: linear-gradient(-45deg, #1e1e1e, #292929, #1b1b1b, #121212);
-  background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
-  padding: 30px;
-}
-
-@keyframes gradientBG {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
-}
-
-.infoBox, form {
-  width: 100%;
-  max-width: 750px;         /* Fixed width */
-  min-height: 500px;        /* Expanded height */
-  margin: auto;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 0 19px #00ffcc;
-  margin-bottom: 34px;
-}
-
-h2 {
-  text-align: center;
-  color: #00ffcc;
-}
-
-input, select, button {
-  width: 100%;
-  margin-bottom: 19px;
-  padding: 16px;
-  border-radius: 10px;
-  border: none;
-  font-size: 19px;
-}
-
-label {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 19px;
-}
-
-input[type="radio"] {
-  width: auto;
-  margin-right: 12px;
-  transform: scale(1.2);
-}
-
-button {
-  background-color: #00aa00;
-  color: white;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  background-color: #008000;
-}
-
-.radio-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 19px;
-  align-items: center;
-  margin-bottom: 19px;
-}
-
-a {
-  color: #00ffcc;
-  text-decoration: underline;
-}
-
-.hidden {
-  display: none;
-}
-
-#warningBox {
-  display: none;
-  color: #ff4444;
-  background-color: #2a0000;
-  padding: 14px;
-  border-left: 8px solid red;
-  margin-bottom: 19px;
-  border-radius: 9px;
-}
-
-.infoBox h3 {
-  color: #00ffcc;
-  border-bottom: 5px solid #00ffcc;
-  padding-bottom: 9px;
-}
-   }
-    @media (max-width: 750px) {
+ html {
+      scroll-behavior: smooth;
+    }
+    @media (max-width: 600px) {
       nav a {
         display: block;
-        margin: 14px 0;
+        margin: 10px 0;
       }
     }
-
+    .plugin-link {
+      float: right;
+      font-size: 0.9em;
+    }
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 6px 12px;
+      background-color: #444;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #plugin-search {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #333;
+      background-color: #1f1f1f;
+      color: #f0f0f0;
+    }
+    #login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 300px;
+      margin: 50px auto;
+    }
+    #login-section {
+      text-align: center;
+    }
+    #main-content {
+      display: none;
+    }
   </style>
 </head>
 <body>
