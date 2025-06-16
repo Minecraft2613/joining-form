@@ -62,8 +62,8 @@ header h1 {
 #contact-form input,
 #contact-form textarea,
 #contact-form select {
-  padding: 10px;
-  border-radius: 6px;
+  padding: 16px;
+  border-radius: 12px;
   border: 1px solid #333;
   background-color: #1f1f1f;
   color: #f0f0f0;
@@ -71,11 +71,11 @@ header h1 {
 }
 
 #contact-form button {
-  padding: 10px;
+  padding: 14px;
   border: none;
   background-color: #42a5f5;
   color: white;
-  border-radius: 6px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
 }
@@ -143,8 +143,8 @@ input[type="text"] {
   background-color: #2a2a2a;
   color: #fff;
   border: 1px solid #444;
-  border-radius: 8px;
-  padding: 8px;
+  border-radius: 14px;
+  padding: 14px;
 }
 
 /* Footer */
