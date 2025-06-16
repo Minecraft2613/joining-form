@@ -173,26 +173,40 @@
   }
 
   function checkRules() {
-    const accepted = document.querySelector('input[name="acceptRules"]:checked').value;
+    const accepted = document.querySelector('input[name="acceptRules"]:checked')?.value;
     document.getElementById("warningBox").style.display = (accepted === "No") ? "block" : "none";
   }
 
+  let formSubmitted = false;
+
   document.getElementById("bonusForm").addEventListener("submit", async function(e) {
     e.preventDefault();
+
+    if (formSubmitted) return; // Prevent multiple submissions
+    formSubmitted = true;
+
     const submitBtn = this.querySelector("button");
     submitBtn.disabled = true;
     submitBtn.textContent = "Submitting...";
 
-    const freemcuser = document.getElementById("freemcuser").value;
-    const name = document.getElementById("name").value;
-    const contact = document.getElementById("contact").value;
-    const mcusername = document.getElementById("mcusername").value;
+    const freemcuser = document.getElementById("freemcuser").value.trim();
+    const name = document.getElementById("name").value.trim();
+    const contact = document.getElementById("contact").value.trim();
+    const mcusername = document.getElementById("mcusername").value.trim();
     const edition = document.getElementById("edition").value;
     const joinedBefore = document.querySelector('input[name="joinedBefore"]:checked')?.value;
     const joinDate = document.getElementById("joinDate").value || "N/A";
     const version = document.getElementById("version").value || "N/A";
     const balance = document.getElementById("balance").value || "N/A";
     const acceptRules = document.querySelector('input[name="acceptRules"]:checked')?.value;
+
+    if (!freemcuser || !name || !contact || !mcusername || !edition || !joinedBefore || !acceptRules) {
+      alert("❗ Please fill in all required fields.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit";
+      formSubmitted = false;
+      return;
+    }
 
     let msg = `🎮 **New Minecraft Joining Bonus Submission**\n
 🌐 FreeMcServer Username: ${freemcuser}
@@ -218,15 +232,21 @@
       localStorage.setItem("formSuccess", "yes");
       sessionStorage.setItem("loggedIn", "true");
 
-      // Redirect quickly after submission
-      window.location.href = "https://minecraft2613.github.io/Minecraft-details/";
+      submitBtn.textContent = "Success ✅";
+
+      // Redirect shortly after to avoid user confusion
+      setTimeout(() => {
+        window.location.href = "https://minecraft2613.github.io/Minecraft-details/";
+      }, 800);
     } catch (err) {
       console.error(err);
-      alert("⚠️ Error sending data.");
+      alert("⚠️ Submission failed, please try again.");
       submitBtn.disabled = false;
       submitBtn.textContent = "Submit";
+      formSubmitted = false;
     }
   });
 </script>
+
 </body>
 </html>
