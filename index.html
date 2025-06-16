@@ -15,32 +15,21 @@ body {
 }
 
 @keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 .infoBox, form {
-  max-width: 750px;
   width: 100%;
+  max-width: 750px;         /* Fixed width */
+  min-height: 580px;        /* Expanded height */
   margin: auto;
   background: rgba(0, 0, 0, 0.6);
   padding: 30px;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 0 15px #00ffcc;
   margin-bottom: 30px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Expand effect */
-.infoBox:hover, form:hover,
-.infoBox:focus-within, form:focus-within {
-  transform: scale(1.02);
-  box-shadow: 0 0 25px #00ffcc;
-}
-
-form {
-  min-height: 750px;
 }
 
 h2 {
@@ -91,7 +80,6 @@ button:hover {
 a {
   color: #00ffcc;
   text-decoration: underline;
-  word-break: break-word;
 }
 
 .hidden {
@@ -120,13 +108,15 @@ a {
   }
 
   .infoBox, form {
+    width: 100%;
     padding: 20px;
+    min-height: 550px;
     box-shadow: 0 0 10px #00ffcc;
   }
 
   input, select, button {
     font-size: 16px;
-    padding: 14px;
+    padding: 12px;
   }
 
   label {
@@ -142,6 +132,10 @@ a {
 
   h2, h3 {
     font-size: 20px;
+  }
+
+  a {
+    word-break: break-word;
   }
 }
 
