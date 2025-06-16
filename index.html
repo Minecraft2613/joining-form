@@ -118,53 +118,59 @@
     </ul>
     <p>✅ Have a good day and enjoy our Minecraft server!</p>
   </div>
+<form id="bonusForm">
+  <h2>📝 Fill the Form Below</h2>
 
-  <form id="bonusForm">
-    <h2>📝 Fill the Form Below</h2>
+  <label for="freemcuser">FreeMcServer Username:</label>
+  <input type="text" id="freemcuser" required />
 
-    <input type="text" id="freemcuser" placeholder="FreeMcServer Username" required />
-    <input type="text" id="name" placeholder="Your Name" required />
-    <input type="text" id="contact" placeholder="Discord ID or Instagram ID" required />
-    <input type="text" id="mcusername" placeholder="Minecraft Username" required />
+  <label for="name">Your Name:</label>
+  <input type="text" id="name" required />
 
-    <label>🖥️ Which edition do you play?</label>
-    <select id="edition" required>
-      <option value="" disabled selected>Select edition</option>
-      <option value="Java">Java Edition</option>
-      <option value="Bedrock">Bedrock Edition</option>
-    </select>
+  <label for="contact">Discord ID or Instagram ID:</label>
+  <input type="text" id="contact" required />
 
-    <label>📥 Have you already joined the server?</label>
-    <div class="radio-group">
-      <label><input type="radio" name="joinedBefore" value="Yes" required onchange="toggleJoinDetails(true)"> Yes</label>
-      <label><input type="radio" name="joinedBefore" value="No" onchange="toggleJoinDetails(false)"> No</label>
-    </div>
+  <label for="mcusername">Minecraft Username:</label>
+  <input type="text" id="mcusername" required />
 
-    <div id="joinDetails" class="hidden">
-      <label>📅 When did you join?</label>
-      <input type="date" id="joinDate" max="2025-12-31" min="2025-01-01" />
+  <label for="edition">🖥️ Which edition do you play?</label>
+  <select id="edition" required>
+    <option value="" disabled selected>Select edition</option>
+    <option value="Java">Java Edition</option>
+    <option value="Bedrock">Bedrock Edition</option>
+  </select>
 
-      <label>🧩 Which version did you join on?</label>
-      <input type="text" id="version" placeholder="e.g., 1.21.4" />
+  <label>📥 Have you already joined the server?</label>
+  <div class="radio-group">
+    <label><input type="radio" name="joinedBefore" value="Yes" required onchange="toggleJoinDetails(true)"> Yes</label>
+    <label><input type="radio" name="joinedBefore" value="No" onchange="toggleJoinDetails(false)"> No</label>
+  </div>
 
-      <label>💰 What is your current balance?</label>
-      <input type="number" id="balance" placeholder="In-game money" />
-    </div>
+  <div id="joinDetails" class="hidden">
+    <label for="joinDate">📅 When did you join?</label>
+    <input type="date" id="joinDate" max="2025-12-31" min="2025-01-01" />
 
-    <label>
-      📜 Do you agree to the 
-      <a href="https://minecraft2613.github.io/Minecarft-2613-Rules/" target="_blank">Minecraft Rules?</a>?
-    </label>
+    <label for="version">🧩 Which version did you join on?</label>
+    <input type="text" id="version" placeholder="e.g., 1.20.4" />
 
-    <div class="radio-group">
-      <label><input type="radio" name="acceptRules" value="Yes" required onchange="checkRules()"> Yes</label>
-      <label><input type="radio" name="acceptRules" value="No" onchange="checkRules()"> No</label>
-    </div>
+    <label for="balance">💰 What is your current balance?</label>
+    <input type="number" id="balance" placeholder="In-game money" />
+  </div>
 
-    <div id="warningBox">⚠️ If you do not agree with the rules, no joining bonus will be given.</div>
+  <label>
+    📜 Do you agree to the 
+    <a href="https://minecraft2613.github.io/Minecarft-2613-Rules/" target="_blank">Minecraft Rules?</a>?
+  </label>
 
-    <button type="submit">Submit</button>
-  </form>
+  <div class="radio-group">
+    <label><input type="radio" name="acceptRules" value="Yes" required onchange="checkRules()"> Yes</label>
+    <label><input type="radio" name="acceptRules" value="No" onchange="checkRules()"> No</label>
+  </div>
+
+  <div id="warningBox">⚠️ If you do not agree with the rules, no joining bonus will be given.</div>
+
+  <button type="submit">Submit</button>
+</form>
 <script>
   const webhookURL = "https://discordapp.com/api/webhooks/1384175324908093600/exW16D_efWe-KA20FdZDE6aOhKnq1AYuiCITMN4-DD3_KhUOWUIB-9RZpp04_-6P__fa";
 
