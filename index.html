@@ -165,34 +165,36 @@
 
     <button type="submit">Submit</button>
   </form>
+<script>
+  const webhookURL = "https://discordapp.com/api/webhooks/1384175324908093600/exW16D_efWe-KA20FdZDE6aOhKnq1AYuiCITMN4-DD3_KhUOWUIB-9RZpp04_-6P__fa";
 
-  <script>
-    const webhookURL = "https://discordapp.com/api/webhooks/1384175324908093600/exW16D_efWe-KA20FdZDE6aOhKnq1AYuiCITMN4-DD3_KhUOWUIB-9RZpp04_-6P__fa"; // Replace with your actual webhook URL
+  function toggleJoinDetails(show) {
+    document.getElementById("joinDetails").classList.toggle("hidden", !show);
+  }
 
-    function toggleJoinDetails(show) {
-      document.getElementById("joinDetails").classList.toggle("hidden", !show);
-    }
+  function checkRules() {
+    const accepted = document.querySelector('input[name="acceptRules"]:checked').value;
+    document.getElementById("warningBox").style.display = (accepted === "No") ? "block" : "none";
+  }
 
-    function checkRules() {
-      const accepted = document.querySelector('input[name="acceptRules"]:checked').value;
-      document.getElementById("warningBox").style.display = (accepted === "No") ? "block" : "none";
-    }
+  document.getElementById("bonusForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+    const submitBtn = this.querySelector("button");
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Submitting...";
 
-    document.getElementById("bonusForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+    const freemcuser = document.getElementById("freemcuser").value;
+    const name = document.getElementById("name").value;
+    const contact = document.getElementById("contact").value;
+    const mcusername = document.getElementById("mcusername").value;
+    const edition = document.getElementById("edition").value;
+    const joinedBefore = document.querySelector('input[name="joinedBefore"]:checked')?.value;
+    const joinDate = document.getElementById("joinDate").value || "N/A";
+    const version = document.getElementById("version").value || "N/A";
+    const balance = document.getElementById("balance").value || "N/A";
+    const acceptRules = document.querySelector('input[name="acceptRules"]:checked')?.value;
 
-      const freemcuser = document.getElementById("freemcuser").value;
-      const name = document.getElementById("name").value;
-      const contact = document.getElementById("contact").value;
-      const mcusername = document.getElementById("mcusername").value;
-      const edition = document.getElementById("edition").value;
-      const joinedBefore = document.querySelector('input[name="joinedBefore"]:checked')?.value;
-      const joinDate = document.getElementById("joinDate").value || "N/A";
-      const version = document.getElementById("version").value || "N/A";
-      const balance = document.getElementById("balance").value || "N/A";
-      const acceptRules = document.querySelector('input[name="acceptRules"]:checked')?.value;
-
-      let msg = `🎮 **New Minecraft Joining Bonus Submission**\n
+    let msg = `🎮 **New Minecraft Joining Bonus Submission**\n
 🌐 FreeMcServer Username: ${freemcuser}
 👤 Name: ${name}
 📱 Contact: ${contact}
@@ -200,33 +202,31 @@
 🖥️ Edition: ${edition}
 📥 Joined Before: ${joinedBefore}`;
 
-      if (joinedBefore === "Yes") {
-        msg += `\n📅 Join Date: ${joinDate}\n🧩 Version: ${version}\n💰 Balance: ${balance}`;
-      }
+    if (joinedBefore === "Yes") {
+      msg += `\n📅 Join Date: ${joinDate}\n🧩 Version: ${version}\n💰 Balance: ${balance}`;
+    }
 
-      msg += `\n✅ Accepted Rules: ${acceptRules}`;
+    msg += `\n✅ Accepted Rules: ${acceptRules}`;
 
-      fetch(webhookURL, {
+    try {
+      await fetch(webhookURL, {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content: msg })
-      })
-      .then(res => {
-        if (res.ok) {
-        localStorage.setItem("formSuccess", "yes");
-        sessionStorage.setItem("loggedIn", "true");
-         window.location.href = "https://minecraft2613.github.io/Minecraft-details/";
-
-        } else {
-          alert("❌ Error sending data.");
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        alert("⚠️ Error connecting to Discord.");
       });
-    });
-  </script>
 
+      localStorage.setItem("formSuccess", "yes");
+      sessionStorage.setItem("loggedIn", "true");
+
+      // Redirect quickly after submission
+      window.location.href = "https://minecraft2613.github.io/Minecraft-details/";
+    } catch (err) {
+      console.error(err);
+      alert("⚠️ Error sending data.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Submit";
+    }
+  });
+</script>
 </body>
 </html>
