@@ -3,80 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <title>Minecraft Joining Bonus</title>
-   <link rel="stylesheet" href="style.css">
+  <!-- 🛠 Mobile fix to prevent zoom on inputs -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="style.css">
   <style>
-/* Glowing Box Animation */
-@keyframes glowForm {
-  from {
-    box-shadow: 0 0 12px #00ffcc, 0 0 24px #00ffcc;
-  }
-  to {
-    box-shadow: 0 0 24px #00ffcc, 0 0 36px #00ffcc;
-  }
-}
+    /* Glowing Box Animation */
+    @keyframes glowForm {
+      from {
+        box-shadow: 0 0 12px #00ffcc, 0 0 24px #00ffcc;
+      }
+      to {
+        box-shadow: 0 0 24px #00ffcc, 0 0 36px #00ffcc;
+      }
+    }
 
-/* Form & Info Styling */
-.infoBox,
-#bonusForm {
-  background: #1e1e1e;
-  border-radius: 15px;
-  padding: 20px;
-  margin: 20px auto;
-  box-shadow: 0 0 12px #00ffcc, 0 0 24px #00ffcc;
-  animation: glowForm 3s ease-in-out infinite alternate;
-  color: #f0f0f0;
-  max-width: 700px;
-}
+    /* Form & Info Styling */
+    .infoBox,
+    #bonusForm {
+      background: #1e1e1e;
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px auto;
+      box-shadow: 0 0 12px #00ffcc, 0 0 24px #00ffcc;
+      animation: glowForm 3s ease-in-out infinite alternate;
+      color: #f0f0f0;
+      max-width: 700px;
+    }
 
-/* Input Styling */
-input,
-select,
-textarea {
-  background-color: #2a2a2a;
-  color: #fff;
-  border: 1px solid #444;
-  padding: 10px;
-  border-radius: 6px;
-  width: 100%;
-  margin-bottom: 10px;
-}
+    /* Input Styling */
+    input,
+    select,
+    textarea {
+      background-color: #2a2a2a;
+      color: #fff;
+      border: 1px solid #444;
+      padding: 12px;
+      font-size: 16px; /* ✅ Prevent Android zoom */
+      border-radius: 6px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
 
-/* Submit Button Styling */
-button[type="submit"] {
-  background-color: #00ffe1;
-  color: black;
-  font-weight: bold;
-  padding: 10px 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
+    /* Submit Button Styling */
+    button[type="submit"] {
+      background-color: #00ffe1;
+      color: black;
+      font-weight: bold;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
 
-button[type="submit"]:hover {
-  background-color: #00ccb3;
-}
+    button[type="submit"]:hover {
+      background-color: #00ccb3;
+    }
 
-/* Warning Box */
-#warningBox {
-  background: #ffeb3b;
-  color: #000;
-  padding: 10px;
-  margin-top: 10px;
-  border-radius: 8px;
-  display: none;
-}
+    /* Warning Box */
+    #warningBox {
+      background: #ffeb3b;
+      color: #000;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 8px;
+      display: none;
+    }
 
-/* Responsive tweaks (optional) */
-@media (max-width: 600px) {
-  nav a {
-    display: block;
-    margin: 10px 0;
-  }
-}
-
+    /* Responsive tweaks (optional) */
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 10px 0;
+      }
+    }
   </style>
 </head>
+
 <body>
 
   <div class="infoBox">
