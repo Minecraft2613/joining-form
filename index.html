@@ -103,38 +103,49 @@ a {
 /* 🔽 Mobile Optimized Layout */
 @media (max-width: 600px) {
   body {
-    padding: 10px;
+    padding: 5px;
   }
 
   .infoBox, form {
-    padding: 20px;
+    padding: 25px;
     max-width: 100%;
-    width: 100%;
-    box-shadow: 0 0 10px #00ffcc;
+    width: 100vw;
+    box-shadow: 0 0 12px #00ffcc;
   }
 
   input, select, button {
-    font-size: 17px;
-    padding: 14px;
+    font-size: 18px;
+    padding: 16px;
+    border-radius: 8px;
   }
 
   label {
-    font-size: 16px;
-    margin-bottom: 8px;
+    font-size: 17px;
+    margin-bottom: 10px;
   }
 
   .radio-group {
     flex-direction: column;
     align-items: flex-start;
-    gap: 10px;
+    gap: 12px;
   }
 
   h2, h3 {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   a {
     word-break: break-word;
+    font-size: 16px;
+  }
+
+  input[type="radio"] {
+    transform: scale(1.4);
+  }
+
+  button {
+    font-size: 18px;
+    padding: 14px;
   }
 }
 
