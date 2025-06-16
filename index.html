@@ -5,80 +5,162 @@
   <title>Minecraft Joining Bonus</title>
   <!-- 🛠 Mobile fix to prevent zoom on inputs -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Glowing Box Animation */
-    @keyframes glowForm {
-      from {
-        box-shadow: 0 0 12px #00ffcc, 0 0 24px #00ffcc;
-      }
-      to {
-        box-shadow: 0 0 24px #00ffcc, 0 0 36px #00ffcc;
-      }
-    }
+ <style>
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* Form & Info Styling */
-    .infoBox,
-    #bonusForm {
-      background: #1e1e1e;
-      border-radius: 15px;
-      padding: 20px;
-      margin: 20px auto;
-      box-shadow: 0 0 12px #00ffcc, 0 0 24px #00ffcc;
-      animation: glowForm 3s ease-in-out infinite alternate;
-      color: #f0f0f0;
-      max-width: 700px;
-    }
+body {
+  background: #121212;
+  color: #f0f0f0;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  padding: 20px;
+}
 
-    /* Input Styling */
-    input,
-    select,
-    textarea {
-      background-color: #2a2a2a;
-      color: #fff;
-      border: 1px solid #444;
-      padding: 12px;
-      font-size: 16px; /* ✅ Prevent Android zoom */
-      border-radius: 6px;
-      width: 100%;
-      margin-bottom: 10px;
-    }
+/* Header */
+header {
+  background: #1e1e1e;
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
 
-    /* Submit Button Styling */
-    button[type="submit"] {
-      background-color: #00ffe1;
-      color: black;
-      font-weight: bold;
-      padding: 10px 16px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+header h1 {
+  color: #00ffe1;
+  font-size: 2.4rem;
+  animation: glowText 2s infinite ease-in-out;
+}
 
-    button[type="submit"]:hover {
-      background-color: #00ccb3;
-    }
+@keyframes glowText {
+  0%, 100% { text-shadow: 0 0 10px #00ffe1; }
+  50% { text-shadow: 0 0 20px #00ffe1, 0 0 30px #00ffe1; }
+}
 
-    /* Warning Box */
-    #warningBox {
-      background: #ffeb3b;
-      color: #000;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 8px;
-      display: none;
-    }
+/* 🔥 Animated Glowing Form Container */
+#contact-form, .infoBox, #bonusForm {
+  max-width: 700px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #1e1e1e;
+  padding: 20px;
+  border-radius: 15px;
+  border: 1px solid #00ffcc;
+  box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+  animation: glowBox 3s ease-in-out infinite alternate;
+  color: #f0f0f0;
+}
 
-    /* Responsive tweaks (optional) */
-    @media (max-width: 600px) {
-      nav a {
-        display: block;
-        margin: 10px 0;
-      }
-    }
-  </style>
-</head>
+@keyframes glowBox {
+  from {
+    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+  }
+  to {
+    box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+  }
+}
+
+/* Form Elements */
+input, select, textarea {
+  background-color: #2a2a2a;
+  color: #fff;
+  border: 1px solid #444;
+  padding: 10px;
+  border-radius: 6px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button[type="submit"], button {
+  background-color: #00ffe1;
+  color: black;
+  font-weight: bold;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover,
+button:hover {
+  background-color: #00ccb3;
+}
+
+/* Section + Glow Titles */
+section {
+  background: #1e1e1e;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+}
+
+h2 {
+  color: #00ffe1;
+  margin-bottom: 10px;
+}
+
+/* List Style */
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  background: #292929;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+li:hover {
+  background: #383838;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9em;
+  color: #999;
+}
+
+/* Link Styles */
+a {
+  color: #00ccff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  nav a {
+    display: block;
+    margin: 10px 0;
+  }
+}
+
+/* Warning Box */
+#warningBox {
+  background: #ffeb3b;
+  color: #000;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  display: none;
+}
+</style>
 
 <body>
 
