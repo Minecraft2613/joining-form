@@ -1,4 +1,4 @@
-/* Reset & Base */
+/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -26,15 +26,15 @@ header {
 header h1 {
   color: #00ffe1;
   font-size: 2.4rem;
-  animation: glow 2s infinite ease-in-out;
+  animation: glowText 2s infinite ease-in-out;
 }
 
-@keyframes glow {
+@keyframes glowText {
   0%, 100% { text-shadow: 0 0 10px #00ffe1; }
   50% { text-shadow: 0 0 20px #00ffe1, 0 0 30px #00ffe1; }
 }
 
-/* Contact Form */
+/* 🔥 Animated Glowing Form Container */
 #contact-form {
   max-width: 600px;
   margin: 20px auto;
@@ -43,11 +43,22 @@ header h1 {
   gap: 12px;
   background: #1e1e1e;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px #00ffcc;
+  border-radius: 15px;
   border: 1px solid #00ffcc;
+  box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+  animation: glowBox 3s ease-in-out infinite alternate;
 }
 
+@keyframes glowBox {
+  from {
+    box-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+  }
+  to {
+    box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+  }
+}
+
+/* Form Elements */
 #contact-form input,
 #contact-form textarea,
 #contact-form select {
@@ -79,24 +90,7 @@ header h1 {
   color: #42f56c;
 }
 
-/* Nav */
-nav {
-  margin-top: 10px;
-}
-
-nav a {
-  margin: 0 15px;
-  color: #ccc;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #00ffe1;
-}
-
-/* Sections */
+/* Section + Glow Titles */
 section {
   background: #1e1e1e;
   border-radius: 12px;
@@ -110,7 +104,7 @@ h2 {
   margin-bottom: 10px;
 }
 
-/* Plugin List */
+/* List Style */
 ul {
   list-style: none;
   padding-left: 0;
@@ -128,7 +122,7 @@ li:hover {
   background: #383838;
 }
 
-/* Copy Button & Input */
+/* Buttons & Input Fields */
 button {
   background-color: #00ffe1;
   color: #000;
@@ -168,15 +162,4 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-/* Status Section Highlight */
-#server-status {
-  font-size: 1.2rem;
-  margin-top: 8px;
-}
-
-#start-link a {
-  color: #00ffcc;
-  font-weight: bold;
 }
