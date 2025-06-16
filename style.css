@@ -36,7 +36,7 @@ header h1 {
 
 /* 🔥 Animated Glowing Form Container */
 #contact-form {
-  max-width: 750px;
+  max-width: 600px;
   margin: 22px auto;
   display: flex;
   flex-direction: column;
