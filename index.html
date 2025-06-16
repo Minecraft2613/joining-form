@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Minecraft Joining Bonus</title>
   <style>
-   body {
+    body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
@@ -100,6 +100,7 @@ a {
   padding-bottom: 5px;
 }
 
+/* 🔽 Mobile Optimized Layout */
 @media (max-width: 600px) {
   body {
     padding: 15px;
@@ -108,6 +109,8 @@ a {
   .infoBox, form {
     padding: 15px;
     box-shadow: 0 0 10px #00ffcc;
+    border-radius: 10px;
+    margin: 20px auto;
   }
 
   input, select, button {
@@ -128,10 +131,22 @@ a {
 
   h2, h3 {
     font-size: 20px;
+    text-align: center;
   }
 
   a {
     word-break: break-word;
+    display: inline-block;
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  input[type="radio"] {
+    transform: scale(1.4);
   }
 }
 
