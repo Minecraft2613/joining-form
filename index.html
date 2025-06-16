@@ -5,60 +5,104 @@
   <title>Minecraft Joining Bonus</title>
   <style>
     body {
-      background-color: #1e1e1e;
-      color: #fff;
+      margin: 0;
       font-family: Arial, sans-serif;
-      padding: 20px;
+      color: white;
+      background: linear-gradient(-45deg, #1e1e1e, #292929, #1b1b1b, #121212);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      padding: 30px;
     }
-    input, textarea, button, select {
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    form {
+      max-width: 500px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffcc;
+    }
+
+    h2 {
+      text-align: center;
+      color: #00ffcc;
+    }
+
+    input, button, label {
       width: 100%;
       margin-bottom: 15px;
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 6px;
       border: none;
+      font-size: 14px;
     }
+
+    input[type="radio"] {
+      width: auto;
+      margin-right: 8px;
+      transform: scale(1.2);
+    }
+
     button {
       background-color: #00aa00;
       color: white;
       cursor: pointer;
+      transition: 0.3s;
     }
-    h2 {
+
+    button:hover {
+      background-color: #008000;
+    }
+
+    .rules-label {
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+
+    a {
       color: #00ffcc;
+      text-decoration: underline;
     }
-    .rules-box {
-      background-color: #2a2a2a;
-      padding: 10px;
-      border: 1px solid #444;
-      max-height: 200px;
-      overflow-y: auto;
-      margin-bottom: 15px;
-    }
+
   </style>
 </head>
 <body>
 
-  <h2>🎁 Minecraft Joining Bonus Form</h2>
-
   <form id="bonusForm">
+    <h2>🎁 Minecraft Joining Bonus</h2>
+
     <input type="text" id="freemcuser" placeholder="FreeMcServer Username" required />
-    <input type="text" id="name" placeholder="Your Real Name" required />
+    <input type="text" id="name" placeholder="Your Name" required />
     <input type="text" id="contact" placeholder="Discord ID or Instagram ID" required />
     <input type="text" id="mcusername" placeholder="Minecraft Username" required />
 
-    <h3>📜 Minecraft Rules:</h3>
-    <div class="rules-box">
-      <iframe src="https://minecraft2613.github.io/Minecarft-2613-Rules/" width="100%" height="200px" style="border:none;"></iframe>
+    <label class="rules-label">
+      Do you agree to the 
+      <a href="https://minecraft2613.github.io/Minecarft-2613-Rules/" target="_blank">Minecraft Rules?</a>
+    </label>
+
+    <div class="radio-group">
+      <label><input type="radio" name="acceptRules" value="Yes" required> Yes</label>
+      <label><input type="radio" name="acceptRules" value="No"> No</label>
     </div>
 
-    <label>✅ Do you accept the Minecraft rules?</label><br>
-    <label><input type="radio" name="acceptRules" value="Yes" required> Yes</label><br>
-    <label><input type="radio" name="acceptRules" value="No"> No</label><br><br>
-
-    <button type="submit">Submit Form</button>
+    <button type="submit">Submit</button>
   </form>
 
   <script>
-    const webhookURL = "YOUR_WEBHOOK_URL_HERE"; // <-- Replace with your Discord webhook URL
+    const webhookURL = "YOUR_DISCORD_WEBHOOK_URL"; // Replace with your actual webhook
 
     document.getElementById("bonusForm").addEventListener("submit", function(e) {
       e.preventDefault();
@@ -70,30 +114,30 @@
       const acceptRules = document.querySelector('input[name="acceptRules"]:checked').value;
 
       const message = {
-        content: `📝 **New Joining Bonus Form Submission**\n
+        content: `🎮 **New Minecraft Joining Bonus Form**\n
 🌐 FreeMcServer Username: ${freemcuser}
 👤 Name: ${name}
-📱 Discord/Instagram ID: ${contact}
-🎮 Minecraft Username: ${mcusername}
-✅ Accepted Rules: ${acceptRules}`
+📱 Contact (Discord/Instagram): ${contact}
+🧱 Minecraft Username: ${mcusername}
+✅ Agreed to Rules: ${acceptRules}`
       };
 
       fetch(webhookURL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {"Content-Type": "application/json"},
         body: JSON.stringify(message)
       })
       .then(response => {
         if (response.ok) {
-          alert("🎉 Form submitted successfully! We’ll contact you soon.");
+          alert("✅ Submitted successfully! We’ll get back to you soon.");
           document.getElementById("bonusForm").reset();
         } else {
-          alert("❌ Error sending data to Discord.");
+          alert("❌ Failed to send data.");
         }
       })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("⚠️ Network error.");
+      .catch(err => {
+        console.error(err);
+        alert("⚠️ Error sending to Discord.");
       });
     });
   </script>
