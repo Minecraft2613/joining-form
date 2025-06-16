@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Minecraft Joining Bonus</title>
   <style>
-    body {
+body {
   margin: 0;
   font-family: Arial, sans-serif;
   color: white;
@@ -15,19 +15,32 @@
 }
 
 @keyframes gradientBG {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .infoBox, form {
   max-width: 750px;
+  width: 100%;
   margin: auto;
   background: rgba(0, 0, 0, 0.6);
-  padding: 25px;
+  padding: 30px;
   border-radius: 10px;
   box-shadow: 0 0 15px #00ffcc;
   margin-bottom: 30px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Expand effect */
+.infoBox:hover, form:hover,
+.infoBox:focus-within, form:focus-within {
+  transform: scale(1.02);
+  box-shadow: 0 0 25px #00ffcc;
+}
+
+form {
+  min-height: 750px;
 }
 
 h2 {
@@ -38,15 +51,15 @@ h2 {
 input, select, button {
   width: 100%;
   margin-bottom: 15px;
-  padding: 10px;
+  padding: 12px;
   border-radius: 6px;
   border: none;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 6px;
   font-size: 15px;
 }
 
@@ -78,6 +91,7 @@ button:hover {
 a {
   color: #00ffcc;
   text-decoration: underline;
+  word-break: break-word;
 }
 
 .hidden {
@@ -100,52 +114,34 @@ a {
   padding-bottom: 5px;
 }
 
-/* 🔽 Mobile Optimized Layout */
-@media (max-width: 750px) {
+@media (max-width: 600px) {
   body {
-    padding: 5px;
+    padding: 15px;
   }
 
   .infoBox, form {
-    padding: 25px;
-    max-width: 100%;
-    width: 100vw;
-    box-shadow: 0 0 12px #00ffcc;
+    padding: 20px;
+    box-shadow: 0 0 10px #00ffcc;
   }
 
   input, select, button {
-    font-size: 18px;
-    padding: 16px;
-    border-radius: 8px;
+    font-size: 16px;
+    padding: 14px;
   }
 
   label {
-    font-size: 17px;
-    margin-bottom: 10px;
+    font-size: 16px;
+    margin-bottom: 8px;
   }
 
   .radio-group {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 10px;
   }
 
   h2, h3 {
-    font-size: 24px;
-  }
-
-  a {
-    word-break: break-word;
-    font-size: 16px;
-  }
-
-  input[type="radio"] {
-    transform: scale(1.4);
-  }
-
-  button {
-    font-size: 18px;
-    padding: 14px;
+    font-size: 20px;
   }
 }
 
