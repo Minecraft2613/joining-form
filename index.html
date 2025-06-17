@@ -5,18 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minecraft Joining Bonus</title>
   <style>
-    /* Center and expand input boxes with padding on both sides */
-input[type="text"],
-input[type="number"],
-input[type="date"],
-select,
-textarea {
-  width: 90%;
-  max-width: 500px;
-  margin: 0 auto 15px auto; /* centers horizontally */
-  display: block;
-}
-
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -61,19 +49,24 @@ textarea {
       display: block;
       margin-top: 10px;
       margin-bottom: 5px;
+      text-align: center;
     }
-input, select, textarea {
-  max-width: 95%; /* Increased from 90% to 95% */
-  margin: 0 auto 15px auto;
-  display: block;
-  padding: 12px; /* Slightly more padding for better touch experience */
-  border-radius: 6px;
-  border: none;
-  font-size: 15px;
-  background-color: #2a2a2a;
-  color: white;
-}
-    
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 95%;
+      max-width: 500px;
+      display: block;
+      margin: 0 auto 15px auto;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      font-size: 15px;
+      background-color: #2a2a2a;
+      color: white;
     }
 
     input[type="radio"] {
@@ -82,7 +75,21 @@ input, select, textarea {
       transform: scale(1.2);
     }
 
-  
+    button {
+      background-color: #00aa00;
+      color: white;
+      font-weight: bold;
+      padding: 14px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      display: block;
+      margin: 20px auto 10px auto;
+      width: 100%;
+      max-width: 500px;
+    }
 
     button:hover {
       background-color: #008000;
@@ -90,9 +97,10 @@ input, select, textarea {
 
     .radio-group {
       display: flex;
-      gap: 20px;
-      align-items: center;
       flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 15px;
     }
 
     a {
@@ -121,41 +129,20 @@ input, select, textarea {
       margin-bottom: 15px;
       border-left: 4px solid orange;
       border-radius: 5px;
+      text-align: center;
     }
-button {
-  background-color: #00aa00;
-  color: white;
-  font-weight: bold;
-  padding: 12px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  display: block;
-  margin: 10px auto;
-}
 
- /* Fix radio buttons to align horizontally */
-.radio-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  align-items: center;
-  margin-bottom: 15px;
-}
+    /* Join Details expanding box */
+    #joinDetails {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
 
-/* Smooth expanding transition for joinDetails section */
-#joinDetails {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.4s ease;
-}
-
-#joinDetails.show {
-  max-height: 500px; /* enough space for inner content */
-  padding-top: 10px;
-}
-
+    #joinDetails.show {
+      max-height: 500px;
+      padding-top: 10px;
+    }
   </style>
 </head>
 <body>
@@ -241,15 +228,14 @@ button {
   <script>
     const webhookURL = "https://discordapp.com/api/webhooks/1384175324908093600/exW16D_efWe-KA20FdZDE6aOhKnq1AYuiCITMN4-DD3_KhUOWUIB-9RZpp04_-6P__fa";
 
-  function toggleJoinDetails(show) {
-  const joinBox = document.getElementById("joinDetails");
-  if (show) {
-    joinBox.classList.add("show");
-  } else {
-    joinBox.classList.remove("show");
-  }
-}
-
+    function toggleJoinDetails(show) {
+      const joinBox = document.getElementById("joinDetails");
+      if (show) {
+        joinBox.classList.add("show");
+      } else {
+        joinBox.classList.remove("show");
+      }
+    }
 
     function checkRules() {
       const accepted = document.querySelector('input[name="acceptRules"]:checked')?.value;
@@ -296,6 +282,5 @@ button {
       }
     });
   </script>
-
 </body>
 </html>
