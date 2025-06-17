@@ -76,6 +76,21 @@
       color: white;
     }
 
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
+    .radio-group label {
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
     button {
       background-color: #00aa00;
       color: white;
@@ -163,12 +178,18 @@
       padding: 6px 12px;
       font-size: 14px;
     }
+
+    a {
+      color: #00ffcc;
+    }
   </style>
 </head>
 <body>
 
+<!-- 🎨 Theme Button -->
 <button class="theme-btn" onclick="toggleThemePanel()">🎨 Change Theme</button>
 
+<!-- 🎨 Theme Panel -->
 <div id="themePanel">
   <label>Box Background Color</label>
   <input type="color" id="boxColor" />
@@ -189,27 +210,19 @@
   <button onclick="resetTheme()">🔄 Reset to Default</button>
 </div>
 
+<!-- 📋 Info -->
 <div class="infoBox">
-  <h2>🎁 Minecraft Joining Bonus</h2>
-  <p>This form is for when you join our server (or plan to join soon). After filling this form, you will receive bonus money in-game.</p>
-  <p><strong>The total amount you will get is 25k$ (excluding tax)</strong></p>
-
-  <h3>Requirements</h3>
-  <ol>
-    <li>You must join the Minecraft server within <strong>24 hours</strong> after filling this form.</li>
-    <li>You must <strong>follow the server rules</strong>.</li>
-    <li>You must play for at least <strong>5 days</strong> to receive the full bonus.</li>
-  </ol>
-
-  <h3>How Do You Get the Bonus?</h3>
+  <h2>🎁 Minecraft Joining Bonus Info</h2>
+  <p>This form is for players who join our Minecraft server. Upon submission, you'll receive up to <strong>25k$</strong> in-game:</p>
   <ul>
-    <li>🟢 After submitting the form and joining the server: <strong>6k$</strong></li>
-    <li>🕒 After 48 hours (2 days): <strong>8k$</strong></li>
-    <li>🕒 After another 48 hours: <strong>11k$</strong></li>
-    <li>⚠️ If payment is not made in time, you will receive <strong>30k$</strong> as a fine (paid by the Form Manager).</li>
+    <li>💸 6k$ after joining</li>
+    <li>💸 8k$ after 2 days</li>
+    <li>💸 11k$ after 4 days</li>
+    <li>⚠️ If invalid info, 30k$ penalty for staff</li>
   </ul>
 </div>
 
+<!-- 📝 Form -->
 <form id="bonusForm">
   <h2>📝 Fill the Form</h2>
 
@@ -233,15 +246,24 @@
   </select>
 
   <label>Have you already joined the server?</label>
-  <label><input type="radio" name="joined" value="Yes"> Yes</label>
-  <label><input type="radio" name="joined" value="No"> No</label>
+  <div class="radio-group">
+    <label><input type="radio" name="joined" value="Yes" required> Yes</label>
+    <label><input type="radio" name="joined" value="No"> No</label>
+  </div>
+
+  <label>📜 Do you agree to the <a href="https://minecraft2613.github.io/Minecarft-2613-Rules/" target="_blank">Minecraft Rules</a>?</label>
+  <div class="radio-group">
+    <label><input type="radio" name="rules" value="Yes" required onchange="checkRules()"> Yes</label>
+    <label><input type="radio" name="rules" value="No" onchange="checkRules()"> No</label>
+  </div>
 
   <div id="warningBox">⚠️ You must agree to the rules to receive the bonus.</div>
-  <div id="finalWarning">⚠️ If any information is false, no bonus will be given.</div>
+  <div id="finalWarning">⚠️ If any information is wrong, no bonus will be given.</div>
 
   <button type="submit" id="submitBtn">Submit</button>
 </form>
 
+<!-- 🔧 Script -->
 <script>
 function toggleThemePanel() {
   const panel = document.getElementById("themePanel");
@@ -249,13 +271,7 @@ function toggleThemePanel() {
 }
 
 function applyTheme() {
-  const vars = [
-    "box-color",
-    "glow-color",
-    "glow-speed",
-    "glow-brightness",
-    "bg-theme"
-  ];
+  const vars = ["box-color", "glow-color", "glow-speed", "glow-brightness", "bg-theme"];
   vars.forEach(v => {
     const value = localStorage.getItem("--" + v);
     if (value) document.documentElement.style.setProperty("--" + v, value);
@@ -285,7 +301,12 @@ function resetTheme() {
     document.documentElement.style.setProperty(v, defaults[v]);
     localStorage.removeItem(v);
   }
-  alert("🔄 Theme has been reset to default.");
+  alert("🔄 Theme reset to default.");
+}
+
+function checkRules() {
+  const accepted = document.querySelector('input[name="rules"]:checked')?.value;
+  document.getElementById("warningBox").style.display = accepted === "No" ? "block" : "none";
 }
 
 window.onload = applyTheme;
