@@ -76,21 +76,6 @@
       color: white;
     }
 
-    .radio-group {
-      display: flex;
-      gap: 20px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin-bottom: 15px;
-    }
-
-    .radio-group label {
-      font-weight: normal;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
     button {
       background-color: #00aa00;
       color: white;
@@ -128,17 +113,11 @@
       border-radius: 5px;
     }
 
-    #themePanel {
-      position: fixed;
-      top: 60px;
-      right: 20px;
-      background: #1b1b1b;
-      border: 2px solid #00ffcc;
-      border-radius: 10px;
-      padding: 15px;
-      width: 260px;
-      display: none;
-      z-index: 999;
+    .radio-row {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 10px;
     }
 
     .theme-btn {
@@ -155,32 +134,30 @@
       z-index: 1000;
     }
 
-    .theme-btn:hover {
-      background-color: #00ccb3;
+    #themePanel {
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      background: #1b1b1b;
+      border: 2px solid #00ffcc;
+      border-radius: 10px;
+      padding: 15px;
+      width: 260px;
+      display: none;
+      z-index: 999;
     }
 
-    #themePanel label {
-      font-weight: normal;
-      color: #ccc;
-      font-size: 14px;
-      margin-top: 10px;
-    }
-
-    #themePanel input[type="color"],
-    #themePanel input[type="range"],
-    #themePanel input[type="text"] {
+    #themePanel input {
       width: 100%;
       margin-bottom: 10px;
     }
 
-    #themePanel button {
+    #successMsg {
+      text-align: center;
+      font-weight: bold;
+      color: #42f57b;
+      display: none;
       margin-top: 10px;
-      padding: 6px 12px;
-      font-size: 14px;
-    }
-
-    a {
-      color: #00ffcc;
     }
   </style>
 </head>
@@ -189,47 +166,31 @@
 <button class="theme-btn" onclick="toggleThemePanel()">🎨 Change Theme</button>
 
 <div id="themePanel">
-  <label>Box Background Color</label>
-  <input type="color" id="boxColor" />
-
+  <label>Box Color</label>
+  <input type="color" id="boxColor">
   <label>Glow Color</label>
-  <input type="color" id="glowColor" />
-
+  <input type="color" id="glowColor">
   <label>Glow Speed</label>
-  <input type="range" id="glowSpeed" min="1" max="10" />
-
+  <input type="range" id="glowSpeed" min="1" max="10">
   <label>Glow Brightness</label>
-  <input type="range" id="glowBrightness" min="0" max="1" step="0.1" />
-
+  <input type="range" id="glowBrightness" min="0.1" max="1" step="0.1">
   <label>Background Theme (Gradient or Image URL)</label>
-  <input type="text" id="bgTheme" placeholder="e.g. linear-gradient(...) or image URL" />
-
+  <input type="text" id="bgTheme" placeholder="linear-gradient(...) or image URL">
   <button onclick="saveTheme()">💾 Save Theme</button>
-  <button onclick="resetTheme()">🔄 Reset to Default</button>
+  <button onclick="resetTheme()">Reset</button>
 </div>
 
 <div class="infoBox">
-  <h2>🎁 Minecraft Joining Bonus</h2>
-  <p>This form is for when you join our server (or plan to join soon). After filling this form, you will receive bonus money in-game.</p>
-  <p><strong>The total amount you will get is 25k$ (excluding tax)</strong></p>
-
-  <h3>Requirements</h3>
-  <ol>
-    <li>You must join the Minecraft server within <strong>24 hours</strong> after filling this form.</li>
-    <li>You must <strong>follow the server rules</strong>.</li>
-    <li>You must play for at least <strong>5 days</strong> to receive the full bonus.</li>
-  </ol>
-
-  <h3>How Do You Get the Bonus?</h3>
+  <h2>🎁 Minecraft Joining Bonus Info</h2>
+  <p>Fill this form to receive bonus money in-game after joining.</p>
   <ul>
-    <li>🟢 After submitting the form and joining the server: <strong>6k$</strong></li>
-    <li>🕒 After 48 hours (2 days): <strong>8k$</strong></li>
-    <li>🕒 After another 48 hours: <strong>11k$</strong></li>
-    <li>⚠️ If payment is not made in time, you will receive <strong>30k$</strong> as a fine (paid by the Form Manager).</li>
+    <li>🟢 After submitting: <b>6k$</b></li>
+    <li>⏱ After 2 days: <b>8k$</b></li>
+    <li>⏱ After 2 more days: <b>11k$</b></li>
+    <li>⚠️ Wrong info = <b>fine of 30k$</b></li>
   </ul>
 </div>
 
-<!-- 📝 Form -->
 <form id="bonusForm">
   <h2>📝 Fill the Form</h2>
 
@@ -237,7 +198,7 @@
   <input type="text" id="freemcuser" placeholder="Enter your FreeMcServer username" required>
 
   <label for="name">Your Name</label>
-  <input type="text" id="name" placeholder="Enter your real name" required>
+  <input type="text" id="name" placeholder="Enter your name" required>
 
   <label for="contact">Discord or Instagram ID</label>
   <input type="text" id="contact" placeholder="e.g., user#1234 or @insta" required>
@@ -252,25 +213,25 @@
     <option value="Bedrock">Bedrock</option>
   </select>
 
-  <label>Have you already joined the server?</label>
-  <div class="radio-group">
+  <label>📥 Have you already joined?</label>
+  <div class="radio-row">
     <label><input type="radio" name="joined" value="Yes" required> Yes</label>
     <label><input type="radio" name="joined" value="No"> No</label>
   </div>
 
-  <label>📜 Do you agree to the <a href="https://minecraft2613.github.io/Minecarft-2613-Rules/" target="_blank">Minecraft Rules</a>?</label>
-  <div class="radio-group">
-    <label><input type="radio" name="rules" value="Yes" required onchange="checkRules()"> Yes</label>
-    <label><input type="radio" name="rules" value="No" onchange="checkRules()"> No</label>
+  <label>📜 Do you agree to the <a href="https://minecraft2613.github.io/Minecarft-2613-Rules/" target="_blank">server rules</a>?</label>
+  <div class="radio-row">
+    <label><input type="radio" name="acceptRules" value="Yes" required onchange="checkRules()"> Yes</label>
+    <label><input type="radio" name="acceptRules" value="No" onchange="checkRules()"> No</label>
   </div>
 
-  <div id="warningBox">⚠️ You must agree to the rules to receive the bonus.</div>
+  <div id="warningBox">⚠️ You must agree to the rules to get bonus.</div>
   <div id="finalWarning">⚠️ If any information is wrong, no bonus will be given.</div>
 
   <button type="submit" id="submitBtn">Submit</button>
+  <p id="successMsg">✅ Form submitted successfully! Redirecting...</p>
 </form>
 
-<!-- 🔧 Script -->
 <script>
 function toggleThemePanel() {
   const panel = document.getElementById("themePanel");
@@ -278,10 +239,10 @@ function toggleThemePanel() {
 }
 
 function applyTheme() {
-  const vars = ["box-color", "glow-color", "glow-speed", "glow-brightness", "bg-theme"];
-  vars.forEach(v => {
-    const value = localStorage.getItem("--" + v);
-    if (value) document.documentElement.style.setProperty("--" + v, value);
+  const keys = ["box-color", "glow-color", "glow-speed", "glow-brightness", "bg-theme"];
+  keys.forEach(k => {
+    const val = localStorage.getItem("--" + k);
+    if (val) document.documentElement.style.setProperty("--" + k, val);
   });
 }
 
@@ -293,28 +254,71 @@ function saveTheme() {
   const bg = document.getElementById("bgTheme").value;
   localStorage.setItem("--bg-theme", bg.startsWith("http") ? `url(${bg})` : bg);
   applyTheme();
-  alert("🎨 Theme saved!");
 }
 
 function resetTheme() {
   const defaults = {
-    '--box-color': '#1e1e1e',
-    '--glow-color': '#00ffcc',
-    '--glow-speed': '3s',
-    '--glow-brightness': '0.6',
-    '--bg-theme': 'linear-gradient(-45deg, #1e1e1e, #292929, #1b1b1b, #121212)'
+    "--box-color": "#1e1e1e",
+    "--glow-color": "#00ffcc",
+    "--glow-speed": "3s",
+    "--glow-brightness": "0.6",
+    "--bg-theme": "linear-gradient(-45deg, #1e1e1e, #292929, #1b1b1b, #121212)"
   };
-  for (let v in defaults) {
-    document.documentElement.style.setProperty(v, defaults[v]);
-    localStorage.removeItem(v);
+  for (const k in defaults) {
+    document.documentElement.style.setProperty(k, defaults[k]);
+    localStorage.removeItem(k);
   }
-  alert("🔄 Theme reset to default.");
 }
 
 function checkRules() {
-  const accepted = document.querySelector('input[name="rules"]:checked')?.value;
-  document.getElementById("warningBox").style.display = accepted === "No" ? "block" : "none";
+  const val = document.querySelector('input[name="acceptRules"]:checked')?.value;
+  document.getElementById("warningBox").style.display = (val === "No") ? "block" : "none";
 }
+
+document.getElementById("bonusForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const submitBtn = document.getElementById("submitBtn");
+  submitBtn.textContent = "Submitting...";
+  submitBtn.disabled = true;
+
+  const data = {
+    freemcuser: document.getElementById("freemcuser").value,
+    name: document.getElementById("name").value,
+    contact: document.getElementById("contact").value,
+    mcusername: document.getElementById("mcusername").value,
+    edition: document.getElementById("edition").value,
+    joined: document.querySelector('input[name="joined"]:checked')?.value || "N/A",
+    rules: document.querySelector('input[name="acceptRules"]:checked')?.value || "N/A"
+  };
+
+  const msg = `🎮 **Joining Bonus Form Submission**
+🌐 FreeMcServer: ${data.freemcuser}
+👤 Name: ${data.name}
+📱 Contact: ${data.contact}
+🧱 Minecraft: ${data.mcusername}
+💻 Edition: ${data.edition}
+📥 Joined Before: ${data.joined}
+✅ Accepted Rules: ${data.rules}`;
+
+  try {
+    await fetch("https://discordapp.com/api/webhooks/1384175324908093600/exW16D_efWe-KA20FdZDE6aOhKnq1AYuiCITMN4-DD3_KhUOWUIB-9RZpp04_-6P__fa", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ content: msg })
+    });
+
+    document.getElementById("successMsg").style.display = "block";
+    setTimeout(() => {
+      window.location.href = "https://minecraft2613.github.io/Minecraft-details/";
+    }, 1500);
+  } catch (err) {
+    alert("⚠️ Submission failed. Try again.");
+    submitBtn.textContent = "Submit";
+    submitBtn.disabled = false;
+    console.error(err);
+  }
+});
 
 window.onload = applyTheme;
 </script>
