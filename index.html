@@ -49,7 +49,6 @@
       display: block;
       margin-top: 10px;
       margin-bottom: 5px;
-      text-align: center;
     }
 
     input[type="text"],
@@ -59,8 +58,8 @@
     textarea {
       width: 95%;
       max-width: 500px;
-      display: block;
       margin: 0 auto 15px auto;
+      display: block;
       padding: 12px;
       border-radius: 6px;
       border: none;
@@ -75,40 +74,28 @@
       transform: scale(1.2);
     }
 
+    .radio-group {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 15px;
+    }
+
     button {
       background-color: #00aa00;
       color: white;
       font-weight: bold;
-      padding: 14px 24px;
-      font-size: 16px;
+      padding: 12px 20px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
       transition: background-color 0.3s;
-      display: block;
-      margin: 20px auto 10px auto;
-      width: 100%;
-      max-width: 500px;
+      font-size: 16px;
     }
 
     button:hover {
       background-color: #008000;
-    }
-
-    .radio-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-      margin-bottom: 15px;
-    }
-
-    a {
-      color: #00ffcc;
-    }
-
-    .hidden {
-      display: none;
     }
 
     #warningBox {
@@ -129,10 +116,15 @@
       margin-bottom: 15px;
       border-left: 4px solid orange;
       border-radius: 5px;
-      text-align: center;
     }
 
-    /* Join Details expanding box */
+    #formStatus {
+      text-align: center;
+      font-weight: bold;
+      color: #00ff99;
+      margin-top: 12px;
+    }
+
     #joinDetails {
       max-height: 0;
       overflow: hidden;
@@ -142,6 +134,10 @@
     #joinDetails.show {
       max-height: 500px;
       padding-top: 10px;
+    }
+
+    a {
+      color: #00ffcc;
     }
   </style>
 </head>
@@ -222,7 +218,8 @@
     <div id="warningBox">⚠️ If you do not agree with the rules, no joining bonus will be given.</div>
     <div id="finalWarning">⚠️ If any information is wrong, no bonus will be given.</div>
 
-    <button type="submit">Submit</button>
+    <button type="submit" id="submitBtn">Submit</button>
+    <p id="formStatus"></p>
   </form>
 
   <script>
@@ -261,6 +258,11 @@
         return;
       }
 
+      const submitBtn = document.getElementById("submitBtn");
+      const formStatus = document.getElementById("formStatus");
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
+
       let msg = `🎮 **New Minecraft Joining Bonus Submission**\n\n🌐 FreeMcServer Username: ${freemcuser}\n👤 Name: ${name}\n📱 Contact: ${contact}\n🧱 Minecraft Username: ${mcusername}\n🖥️ Edition: ${edition}\n📥 Joined Before: ${joinedBefore}`;
 
       if (joinedBefore === "Yes") {
@@ -275,12 +277,21 @@
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ content: msg })
         });
-        window.location.href = "https://minecraft2613.github.io/Minecraft-details/";
+
+        submitBtn.textContent = "Submitted ✅";
+        formStatus.textContent = "Form has been successfully submitted ✅";
+
+        setTimeout(() => {
+          window.location.href = "https://minecraft2613.github.io/Minecraft-details/";
+        }, 1500);
       } catch (err) {
         alert("⚠️ Failed to submit. Try again later.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit";
         console.error(err);
       }
     });
   </script>
+
 </body>
 </html>
