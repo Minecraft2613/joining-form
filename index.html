@@ -81,18 +81,21 @@
       flex-wrap: wrap;
       margin-bottom: 15px;
     }
-
-    button {
-      background-color: #00aa00;
-      color: white;
-      font-weight: bold;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      font-size: 16px;
-    }
+button {
+  background-color: #00aa00;
+  color: white;
+  font-weight: bold;
+  padding: 10px 24px; /* 🔽 reduced height (was 14px 24px) */
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  display: block;
+  margin: 20px auto 10px auto;
+  width: 100%;
+  max-width: 500px;
+}
 
     button:hover {
       background-color: #008000;
