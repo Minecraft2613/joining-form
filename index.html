@@ -213,10 +213,28 @@
     <label>Glow Brightness: <input type="range" min="0.2" max="1.5" step="0.1" id="brightness" /></label><br>
     <label>Glow Speed: <input type="range" min="1" max="10" step="1" id="speed" /></label><br>
     <label>Background Image / Gradient: <input type="text" id="bgTheme" placeholder="URL or CSS Gradient" /></label><br>
-    <button onclick="saveTheme()">💾 Save Theme</button>
+  <button onclick="saveTheme()">💾 Save Theme</button>
+<button onclick="resetTheme()">🔄 Reset to Default</button>
   </div>
 
   <script>
+    function resetTheme() {
+  const defaults = {
+    '--box-color': '#1e1e1e',
+    '--glow-color': '#00ffcc',
+    '--glow-speed': '3s',
+    '--glow-brightness': '0.6',
+    '--bg-theme': 'linear-gradient(-45deg, #1e1e1e, #292929, #1b1b1b, #121212)'
+  };
+
+  for (let v in defaults) {
+    document.documentElement.style.setProperty(v, defaults[v]);
+    localStorage.removeItem(v); // Remove saved user theme
+  }
+
+  alert("🔄 Theme has been reset to default.");
+}
+
     const webhookURL = "https://discordapp.com/api/webhooks/1384175324908093600/exW16D_efWe-KA20FdZDE6aOhKnq1AYuiCITMN4-DD3_KhUOWUIB-9RZpp04_-6P__fa";
 
     function toggleJoinDetails(show) {
