@@ -3,92 +3,101 @@
 <head>
   <meta charset="UTF-8">
   <title>Minecraft Joining Bonus</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      background: #121212;
-      color: #f0f0f0;
-      font-family: 'Segoe UI', sans-serif;
-      padding: 20px;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background: linear-gradient(-45deg, #1e1e1e, #292929, #1b1b1b, #121212);
+      background-size: 400% 400%;
+      animation: gradientBG 10s ease infinite;
+      padding: 30px;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .infoBox, form {
+      max-width: 600px;
+      margin: auto;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px #00ffcc;
+      margin-bottom: 30px;
     }
 
     h2 {
-      color: #00ffe1;
       text-align: center;
-      font-size: 2rem;
-      text-shadow: 0 0 10px #00ffe1, 0 0 20px #00ffe1, 0 0 30px #00ffe1;
+      color: #00ffcc;
     }
 
-    .infoBox, #bonusForm {
-      max-width: 700px;
-      margin: 30px auto;
-      padding: 20px;
-      border-radius: 15px;
-      background-color: #1e1e1e;
-      border: 1px solid #00ffcc;
-      box-shadow: 0 0 8px #00ffcc, 0 0 16px #00ffcc;
-      animation: glowBox 4s ease-in-out infinite alternate;
-    }
-
-    @keyframes glowBox {
-      from {
-        box-shadow: 0 0 8px #00ffcc, 0 0 16px #00ffcc;
-      }
-      to {
-        box-shadow: 0 0 12px #00ffcc, 0 0 24px #00ffcc;
-      }
-    }
-
-    input, select, textarea {
-      background-color: #2a2a2a;
-      color: #fff;
-      border: 1px solid #444;
+    input, select, button, label {
+      width: 100%;
+      margin-bottom: 15px;
       padding: 10px;
       border-radius: 6px;
-      width: 100%;
-      margin-bottom: 12px;
-    }
-
-    button[type="submit"] {
-      background-color: #00ffe1;
-      color: black;
-      font-weight: bold;
-      padding: 10px 16px;
       border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s;
+      font-size: 14px;
     }
 
-    button[type="submit"]:hover {
-      background-color: #00ccb3;
+    input[type="radio"] {
+      width: auto;
+      margin-right: 8px;
+      transform: scale(1.2);
+    }
+
+    button {
+      background-color: #00aa00;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #008000;
     }
 
     .radio-group {
-      margin: 10px 0;
+      display: flex;
+      gap: 20px;
+      align-items: center;
     }
 
-    #warningBox {
-      background: #ffeb3b;
-      color: #000;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 8px;
-      display: none;
-    }
-
-    .final-warning {
-      background: #ff4444;
-      color: #fff;
-      padding: 10px;
-      text-align: center;
-      margin-bottom: 12px;
-      border-radius: 6px;
-      font-weight: bold;
+    a {
+      color: #00ffcc;
+      text-decoration: underline;
     }
 
     .hidden {
       display: none;
+    }
+
+    #warningBox {
+      display: none;
+      color: #ff4444;
+      background-color: #2a0000;
+      padding: 10px;
+      border-left: 4px solid red;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+
+    .infoBox h3 {
+      color: #00ffcc;
+      border-bottom: 1px solid #00ffcc;
+      padding-bottom: 5px;
+    }
+
+    #final-warning {
+      color: orange;
+      font-size: 0.95em;
+      text-align: center;
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -96,62 +105,72 @@
 
   <div class="infoBox">
     <h2>🎁 Minecraft Joining Bonus Info</h2>
+    <h3>Hello,</h3>
     <p>Dear user, this form is for when you join our server (or plan to join soon). After filling this form, you will receive bonus money in-game.</p>
-    <p><strong>Total Bonus: 25k$ (excluding tax)</strong></p>
+    <p><strong>The total amount you will get is 25k$ (excluding tax)</strong></p>
 
     <h3>Requirements</h3>
-    <ul>
-      <li>Join the Minecraft server within 24 hours after submitting this form.</li>
-      <li>Follow the server rules.</li>
-      <li>Play for at least 5 days to receive the full bonus.</li>
-    </ul>
+    <ol>
+      <li>You must join the Minecraft server within <strong>24 hours</strong> after filling this form.</li>
+      <li>You must <strong>follow the server rules</strong>.</li>
+      <li>You must play for at least <strong>5 days</strong> to receive the full bonus.</li>
+    </ol>
 
-    <h3>Bonus Breakdown</h3>
+    <h3>How Do You Get the Bonus?</h3>
     <ul>
-      <li>🟢 Immediately: 6k$</li>
-      <li>🕒 After 2 days: 8k$</li>
-      <li>🕒 After 4 days: 11k$</li>
-      <li>⚠️ Late payout results in 30k$ fine for the manager.</li>
+      <li>🟢 After submitting the form and joining the server: <strong>6k$</strong></li>
+      <li>🕒 After 48 hours (2 days): <strong>8k$</strong></li>
+      <li>🕒 After another 48 hours: <strong>12k$</strong></li>
+      <li>⚠️ If payment is not made in time, you will receive <strong>30k$</strong> as a fine (paid by the Form Manager).</li>
     </ul>
+    <p>✅ Have a good day and enjoy our Minecraft server!</p>
   </div>
 
   <form id="bonusForm">
-    <h2>📝 Fill the Form</h2>
+    <h2>📝 Fill the Form Below</h2>
 
-    <input type="text" id="freemcuser" placeholder="Enter your FreeMcServer username" required />
-    <input type="text" id="name" placeholder="Enter your real name" required />
+    <input type="text" id="freemcuser" placeholder="Enter your FreeMcServer Username" required />
+    <input type="text" id="name" placeholder="Enter your Name" required />
     <input type="text" id="contact" placeholder="Enter your Discord or Instagram ID" required />
-    <input type="text" id="mcusername" placeholder="Enter your Minecraft username" required />
+    <input type="text" id="mcusername" placeholder="Enter your Minecraft Username" required />
 
+    <label>🖥️ Which edition do you play?</label>
     <select id="edition" required>
-      <option value="" disabled selected>Select your Minecraft Edition</option>
+      <option value="" disabled selected>Select edition</option>
       <option value="Java">Java Edition</option>
       <option value="Bedrock">Bedrock Edition</option>
     </select>
 
     <label>📥 Have you already joined the server?</label>
     <div class="radio-group">
-      <label><input type="radio" name="joinedBefore" value="Yes" onchange="toggleJoinDetails(true)"> Yes</label>
+      <label><input type="radio" name="joinedBefore" value="Yes" required onchange="toggleJoinDetails(true)"> Yes</label>
       <label><input type="radio" name="joinedBefore" value="No" onchange="toggleJoinDetails(false)"> No</label>
     </div>
 
     <div id="joinDetails" class="hidden">
+      <label>📅 When did you join?</label>
       <input type="date" id="joinDate" max="2025-12-31" min="2025-01-01" />
-      <input type="text" id="version" placeholder="Enter the Minecraft version you joined with (e.g., 1.20.4)" />
-      <input type="number" id="balance" placeholder="Enter your in-game balance" />
+
+      <label>🧩 Which version did you join on?</label>
+      <input type="text" id="version" placeholder="e.g., 1.20.4" />
+
+      <label>💰 What is your current balance?</label>
+      <input type="number" id="balance" placeholder="In-game balance" />
     </div>
 
-    <label>📜 Do you agree to the 
-      <a href="https://minecraft2613.github.io/Minecarft-2613-Rules/" target="_blank">Minecraft Rules</a>?
+    <label>
+      📜 Do you agree to the 
+      <a href="https://minecraft2613.github.io/Minecarft-2613-Rules/" target="_blank">Minecraft Rules?</a>?
     </label>
+
     <div class="radio-group">
       <label><input type="radio" name="acceptRules" value="Yes" required onchange="checkRules()"> Yes</label>
       <label><input type="radio" name="acceptRules" value="No" onchange="checkRules()"> No</label>
     </div>
 
     <div id="warningBox">⚠️ If you do not agree with the rules, no joining bonus will be given.</div>
+    <div id="final-warning">⚠️ If any information is wrong, no bonus will be given.</div>
 
-    <div class="final-warning">⚠️ If any information is wrong, no bonus will be given.</div>
     <button type="submit">Submit</button>
   </form>
 
@@ -167,35 +186,19 @@
       document.getElementById("warningBox").style.display = (accepted === "No") ? "block" : "none";
     }
 
-    let formSubmitted = false;
-
-    document.getElementById("bonusForm").addEventListener("submit", async function(e) {
+    document.getElementById("bonusForm").addEventListener("submit", function(e) {
       e.preventDefault();
-      if (formSubmitted) return;
 
-      formSubmitted = true;
-      const submitBtn = this.querySelector("button");
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Submitting...";
-
-      const freemcuser = document.getElementById("freemcuser").value.trim();
-      const name = document.getElementById("name").value.trim();
-      const contact = document.getElementById("contact").value.trim();
-      const mcusername = document.getElementById("mcusername").value.trim();
+      const freemcuser = document.getElementById("freemcuser").value;
+      const name = document.getElementById("name").value;
+      const contact = document.getElementById("contact").value;
+      const mcusername = document.getElementById("mcusername").value;
       const edition = document.getElementById("edition").value;
       const joinedBefore = document.querySelector('input[name="joinedBefore"]:checked')?.value;
       const joinDate = document.getElementById("joinDate").value || "N/A";
       const version = document.getElementById("version").value || "N/A";
       const balance = document.getElementById("balance").value || "N/A";
       const acceptRules = document.querySelector('input[name="acceptRules"]:checked')?.value;
-
-      if (!freemcuser || !name || !contact || !mcusername || !edition || !joinedBefore || !acceptRules) {
-        alert("❗ Please fill in all required fields.");
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Submit";
-        formSubmitted = false;
-        return;
-      }
 
       let msg = `🎮 **New Minecraft Joining Bonus Submission**\n
 🌐 FreeMcServer Username: ${freemcuser}
@@ -211,28 +214,25 @@
 
       msg += `\n✅ Accepted Rules: ${acceptRules}`;
 
-      try {
-        await fetch(webhookURL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ content: msg })
-        });
-
-        localStorage.setItem("formSuccess", "yes");
-        sessionStorage.setItem("loggedIn", "true");
-
-        submitBtn.textContent = "Success ✅";
-        setTimeout(() => {
+      fetch(webhookURL, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ content: msg })
+      })
+      .then(res => {
+        if (res.ok) {
+          localStorage.setItem("formSuccess", "yes");
           window.location.href = "https://minecraft2613.github.io/Minecraft-details/";
-        }, 800);
-      } catch (err) {
+        } else {
+          alert("❌ Error sending data.");
+        }
+      })
+      .catch(err => {
         console.error(err);
-        alert("⚠️ Submission failed, please try again.");
-        submitBtn.disabled = false;
-        submitBtn.textContent = "Submit";
-        formSubmitted = false;
-      }
+        alert("⚠️ Error connecting to Discord.");
+      });
     });
   </script>
+
 </body>
 </html>
