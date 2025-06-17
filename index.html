@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Minecraft Joining Bonus</title>
+  <title>Minecraft Bonus Form</title>
   <style>
     :root {
       --box-bg: #1e1e1e;
@@ -18,10 +18,12 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(-45deg, #1e1e1e, #292929, #1b1b1b, #121212);
-      background-size: 400% 400%;
+      background-image: var(--background-img);
+      background-size: cover;
+      background-position: center;
+      color: var(--text-color);
       animation: gradientBG 12s ease infinite;
       padding: 20px;
-      color: var(--text-color);
     }
 
     @keyframes gradientBG {
@@ -30,7 +32,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    .infoBox, form {
+    form {
       max-width: 640px;
       margin: auto;
       background: var(--box-bg);
@@ -42,17 +44,16 @@
 
     @keyframes glowBox {
       from {
-        box-shadow: 0 0 calc(10px * var(--glow-brightness)) var(--glow-color), 0 0 calc(20px * var(--glow-brightness)) var(--glow-color);
+        box-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
       }
       to {
-        box-shadow: 0 0 calc(20px * var(--glow-brightness)) var(--glow-color), 0 0 calc(35px * var(--glow-brightness)) var(--glow-color);
+        box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
       }
     }
 
     h2 {
       text-align: center;
       color: var(--glow-color);
-      margin-bottom: 15px;
     }
 
     label {
@@ -63,7 +64,8 @@
     }
 
     input, select, textarea {
-      width: 95%;
+      width: 90%;
+      max-width: 500px;
       margin: 0 auto 15px auto;
       display: block;
       padding: 12px;
@@ -77,7 +79,7 @@
     input[type="radio"] {
       width: auto;
       margin-right: 8px;
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
 
     .radio-group {
@@ -85,118 +87,83 @@
       flex-wrap: wrap;
       gap: 20px;
       align-items: center;
-      margin-bottom: 15px;
+      justify-content: center;
     }
 
     button {
-      padding: 12px 20px;
-      font-size: 16px;
       background-color: #00aa00;
       color: white;
       font-weight: bold;
+      padding: 10px 20px;
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      font-size: 16px;
       display: block;
-      margin: auto;
+      margin: 20px auto 0;
     }
 
     button:hover {
       background-color: #008000;
     }
 
-    #warningBox, #finalWarning {
-      margin: 10px 0;
-      padding: 10px;
-      border-left: 4px solid;
-      border-radius: 6px;
-    }
-
     #warningBox {
       display: none;
-      background: #2a0000;
       color: #ff4444;
-      border-color: red;
+      background-color: #2a0000;
+      padding: 10px;
+      border-left: 4px solid red;
+      margin-top: 10px;
+      border-radius: 5px;
     }
 
     #finalWarning {
-      background: #1c1c1c;
       color: orange;
-      border-color: orange;
-    }
-
-    /* Theme button and section */
-    #theme-toggle {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-      padding: 6px 12px;
-      background: #444;
-      border: none;
-      color: #fff;
-      border-radius: 6px;
-      cursor: pointer;
+      background: #1c1c1c;
+      padding: 10px;
+      border-left: 4px solid orange;
+      margin-top: 15px;
+      border-radius: 5px;
+      text-align: center;
     }
 
     #theme-panel {
-      display: none;
       max-width: 640px;
-      margin: 20px auto;
-      padding: 15px;
-      background: #1e1e1e;
+      margin: 30px auto;
+      background: #1a1a1a;
+      border: 1px solid #333;
+      padding: 20px;
       border-radius: 10px;
+      display: none;
     }
 
-    #theme-panel label {
-      margin-top: 10px;
-    }
-
-    #theme-panel input[type="color"],
-    #theme-panel input[type="range"],
-    #theme-panel input[type="url"],
-    #theme-panel select {
+    #theme-panel input[type="range"] {
       width: 100%;
-      margin-bottom: 10px;
     }
 
-    @media (max-width: 600px) {
-      .radio-group {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    .theme-toggle {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+      background: #222;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .theme-toggle:hover {
+      background: #333;
     }
   </style>
 </head>
 <body>
 
-<button id="theme-toggle" onclick="toggleThemePanel()">Change Theme</button>
-
-<div class="infoBox">
-  <h2>🎁 Minecraft Joining Bonus Info</h2>
-  <h3>Hello,</h3>
-  <p>This form is for users who join our server (or plan to join soon). After filling it, you will receive bonus in-game money.</p>
-  <p><strong>You’ll get: 25k$ (excluding tax)</strong></p>
-
-  <h3>Requirements</h3>
-  <ol>
-    <li>Join the server within <strong>24 hours</strong> of submitting.</li>
-    <li><strong>Follow server rules</strong>.</li>
-    <li>Play at least <strong>5 days</strong> to receive full bonus.</li>
-  </ol>
-
-  <h3>How Will You Receive It?</h3>
-  <ul>
-    <li>✅ After submitting & joining: <strong>6k$</strong></li>
-    <li>⏱ After 2 days: <strong>8k$</strong></li>
-    <li>⏱ After another 2 days: <strong>11k$</strong></li>
-    <li>⚠️ If missed: <strong>30k$</strong> fine (Form Manager pays)</li>
-  </ul>
-  <p>Enjoy your time on the server!</p>
-</div>
+<button class="theme-toggle" onclick="toggleThemePanel()">Change Theme</button>
 
 <form id="bonusForm">
-  <h2>📝 Fill the Form Below</h2>
+  <h2>🎁 Minecraft Joining Bonus</h2>
 
   <label for="freemcuser">FreeMcServer Username:</label>
   <input type="text" id="freemcuser" placeholder="Enter your FreeMcServer username" required />
@@ -204,13 +171,13 @@
   <label for="name">Your Name:</label>
   <input type="text" id="name" placeholder="Enter your name" required />
 
-  <label for="contact">Discord/Instagram ID:</label>
+  <label for="contact">Discord or Instagram ID:</label>
   <input type="text" id="contact" placeholder="Enter your contact ID" required />
 
   <label for="mcusername">Minecraft Username:</label>
   <input type="text" id="mcusername" placeholder="Enter your Minecraft username" required />
 
-  <label>Edition:</label>
+  <label for="edition">Which edition do you play?</label>
   <select id="edition" required>
     <option value="" disabled selected>Select edition</option>
     <option value="Java">Java Edition</option>
@@ -223,18 +190,18 @@
     <label><input type="radio" name="joinedBefore" value="No" onchange="toggleJoinDetails(false)"> No</label>
   </div>
 
-  <div id="joinDetails" style="display:none">
-    <label for="joinDate">Join Date:</label>
+  <div id="joinDetails" class="hidden">
+    <label for="joinDate">When did you join?</label>
     <input type="date" id="joinDate" />
 
-    <label for="version">Joined Version:</label>
+    <label for="version">Which version did you join on?</label>
     <input type="text" id="version" placeholder="e.g., 1.20.4" />
 
-    <label for="balance">In-game Balance:</label>
-    <input type="number" id="balance" placeholder="Enter current balance" />
+    <label for="balance">Current in-game balance:</label>
+    <input type="number" id="balance" placeholder="Enter your balance" />
   </div>
 
-  <label>Do you agree to the <a href="https://minecraft2613.github.io/Minecarft-2613-Rules/" target="_blank">rules</a>?</label>
+  <label>Do you agree to the <a href="https://minecraft2613.github.io/Minecarft-2613-Rules/" target="_blank">server rules</a>?</label>
   <div class="radio-group">
     <label><input type="radio" name="acceptRules" value="Yes" required onchange="checkRules()"> Yes</label>
     <label><input type="radio" name="acceptRules" value="No" onchange="checkRules()"> No</label>
@@ -243,14 +210,16 @@
   <div id="warningBox">⚠️ If you do not agree with the rules, no joining bonus will be given.</div>
   <div id="finalWarning">⚠️ If any information is wrong, no bonus will be given.</div>
 
-  <button type="submit">Submit</button>
+  <button type="submit" id="submitBtn">Submit</button>
 </form>
 
+<!-- Theme Customizer Panel -->
 <div id="theme-panel">
-  <h2>🎨 Customize Theme 
-  <button onclick="resetTheme()" style="float:right; padding:4px 10px; font-size:14px;">Reset Default</button>
-</h2>
-  <label>Box Background Color:</label>
+  <h2 style="display:flex; justify-content:space-between; align-items:center;">
+    🎨 Customize Theme
+    <button onclick="resetTheme()" style="font-size: 14px; padding: 4px 10px;">Reset</button>
+  </h2>
+  <label>Form Background Color:</label>
   <input type="color" id="box-bg" />
 
   <label>Text Color:</label>
@@ -260,17 +229,125 @@
   <input type="color" id="glow-color" />
 
   <label>Glow Speed (seconds):</label>
-  <input type="range" id="glow-speed" min="1" max="10" value="3" />
+  <input type="range" id="glow-speed" min="1" max="10" step="1" />
 
   <label>Glow Brightness:</label>
-  <input type="range" id="glow-brightness" min="0" max="2" step="0.1" value="1" />
+  <input type="range" id="glow-brightness" min="0" max="2" step="0.1" />
 
-  <label>Background Image URL (optional):</label>
-  <input type="url" id="background-img" placeholder="https://example.com/image.jpg" />
+  <label>Background Image URL:</label>
+  <input type="url" id="background-img" placeholder="https://example.com/bg.jpg" />
 </div>
+
 <script>
-  function resetTheme() {
-  const defaults = {
+const webhookURL = "https://discordapp.com/api/webhooks/1384175324908093600/exW16D_efWe-KA20FdZDE6aOhKnq1AYuiCITMN4-DD3_KhUOWUIB-9RZpp04_-6P__fa";
+
+function toggleJoinDetails(show) {
+  const joinDetails = document.getElementById("joinDetails");
+  if (show) {
+    joinDetails.classList.remove("hidden");
+  } else {
+    joinDetails.classList.add("hidden");
+  }
+}
+
+function checkRules() {
+  const agreed = document.querySelector('input[name="acceptRules"]:checked')?.value;
+  document.getElementById("warningBox").style.display = (agreed === "No") ? "block" : "none";
+}
+
+document.getElementById("bonusForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const submitBtn = document.getElementById("submitBtn");
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting...";
+
+  const freemcuser = document.getElementById("freemcuser").value.trim();
+  const name = document.getElementById("name").value.trim();
+  const contact = document.getElementById("contact").value.trim();
+  const mcusername = document.getElementById("mcusername").value.trim();
+  const edition = document.getElementById("edition").value;
+  const joinedBefore = document.querySelector('input[name="joinedBefore"]:checked')?.value;
+  const joinDate = document.getElementById("joinDate").value || "N/A";
+  const version = document.getElementById("version").value || "N/A";
+  const balance = document.getElementById("balance").value || "N/A";
+  const acceptRules = document.querySelector('input[name="acceptRules"]:checked')?.value;
+
+  if (!freemcuser || !name || !contact || !mcusername || !edition || !joinedBefore || !acceptRules) {
+    alert("❗ Please fill all required fields.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit";
+    return;
+  }
+
+  let msg = `🎮 **New Minecraft Joining Bonus Submission**\n\n🌐 FreeMcServer Username: ${freemcuser}\n👤 Name: ${name}\n📱 Contact: ${contact}\n🧱 Minecraft Username: ${mcusername}\n🖥️ Edition: ${edition}\n📥 Joined Before: ${joinedBefore}`;
+
+  if (joinedBefore === "Yes") {
+    msg += `\n📅 Join Date: ${joinDate}\n🧩 Version: ${version}\n💰 Balance: ${balance}`;
+  }
+
+  msg += `\n✅ Accepted Rules: ${acceptRules}`;
+
+  try {
+    await fetch(webhookURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content: msg })
+    });
+
+    submitBtn.textContent = "✅ Submitted!";
+    setTimeout(() => {
+      submitBtn.textContent = "Submit";
+      submitBtn.disabled = false;
+    }, 2000);
+  } catch (err) {
+    alert("⚠️ Submission failed. Try again later.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit";
+  }
+});
+
+// Theme system
+const themeVars = ["box-bg", "text-color", "glow-color", "glow-speed", "glow-brightness", "background-img"];
+
+function applyTheme(theme) {
+  themeVars.forEach(key => {
+    document.documentElement.style.setProperty(`--${key}`, theme[key] || "");
+    const input = document.getElementById(key);
+    if (input) input.value = theme[key];
+  });
+}
+
+function loadTheme() {
+  const saved = localStorage.getItem("theme");
+  if (saved) applyTheme(JSON.parse(saved));
+}
+
+function toggleThemePanel() {
+  const panel = document.getElementById("theme-panel");
+  panel.style.display = panel.style.display === "block" ? "none" : "block";
+}
+
+themeVars.forEach(key => {
+  const input = document.getElementById(key);
+  if (input) {
+    input.addEventListener("input", () => {
+      let val = input.value;
+      if (key === "glow-speed") val += "s";
+      document.documentElement.style.setProperty(`--${key}`, val);
+
+      const current = {};
+      themeVars.forEach(k => {
+        const v = document.getElementById(k)?.value;
+        current[k] = k === "glow-speed" && v ? v + "s" : v;
+      });
+      localStorage.setItem("theme", JSON.stringify(current));
+    });
+  }
+});
+
+function resetTheme() {
+  const defaultTheme = {
     "box-bg": "#1e1e1e",
     "text-color": "#f0f0f0",
     "glow-color": "#00ffcc",
@@ -278,99 +355,11 @@
     "glow-brightness": "1",
     "background-img": "none"
   };
-
-  for (const key in defaults) {
-    document.documentElement.style.setProperty(`--${key}`, defaults[key]);
-    const el = document.getElementById(key);
-    if (el) el.value = (key === "glow-speed") ? parseInt(defaults[key]) : defaults[key];
-  }
-
-  localStorage.setItem("theme", JSON.stringify(defaults));
+  applyTheme(defaultTheme);
+  localStorage.setItem("theme", JSON.stringify(defaultTheme));
 }
 
-  function toggleJoinDetails(show) {
-    document.getElementById("joinDetails").style.display = show ? "block" : "none";
-  }
-
-  function checkRules() {
-    const agreed = document.querySelector('input[name="acceptRules"]:checked')?.value;
-    document.getElementById("warningBox").style.display = (agreed === "No") ? "block" : "none";
-  }
-
-  document.getElementById("bonusForm").addEventListener("submit", async function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector("button");
-    btn.disabled = true;
-    btn.textContent = "Submitting...";
-
-    const data = {
-      freemcuser: form.freemcuser.value,
-      name: form.name.value,
-      contact: form.contact.value,
-      mcusername: form.mcusername.value,
-      edition: form.edition.value,
-      joinedBefore: form.querySelector('input[name="joinedBefore"]:checked')?.value,
-      joinDate: form.joinDate.value || "N/A",
-      version: form.version.value || "N/A",
-      balance: form.balance.value || "N/A",
-      acceptRules: form.querySelector('input[name="acceptRules"]:checked')?.value
-    };
-
-    const msg = `🎮 **New Minecraft Joining Bonus Submission**
-🌐 FreeMcServer Username: ${data.freemcuser}
-👤 Name: ${data.name}
-📱 Contact: ${data.contact}
-🧱 Minecraft Username: ${data.mcusername}
-🖥️ Edition: ${data.edition}
-📥 Joined Before: ${data.joinedBefore}
-${data.joinedBefore === "Yes" ? `📅 Join Date: ${data.joinDate}
-🧩 Version: ${data.version}
-💰 Balance: ${data.balance}` : ""}
-✅ Accepted Rules: ${data.acceptRules}`;
-
-    try {
-      await fetch("https://discordapp.com/api/webhooks/1384175324908093600/exW16D_efWe-KA20FdZDE6aOhKnq1AYuiCITMN4-DD3_KhUOWUIB-9RZpp04_-6P__fa", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ content: msg })
-      });
-      btn.textContent = "Form has been successfully submitted ✅";
-    } catch (e) {
-      console.error(e);
-      alert("❌ Error submitting form.");
-      btn.disabled = false;
-      btn.textContent = "Submit";
-    }
-  });
-
-  // THEME HANDLER
-  function toggleThemePanel() {
-    const panel = document.getElementById("theme-panel");
-    panel.style.display = panel.style.display === "block" ? "none" : "block";
-  }
-
-  function applyThemeFromStorage() {
-    const theme = JSON.parse(localStorage.getItem("theme")) || {};
-    for (const key in theme) {
-      document.documentElement.style.setProperty(`--${key}`, theme[key]);
-      document.getElementById(key)?.value !== undefined && (document.getElementById(key).value = theme[key]);
-    }
-  }
-
-  document.querySelectorAll("#theme-panel input").forEach(input => {
-    input.addEventListener("input", () => {
-      const key = input.id;
-      const val = input.type === "range" || input.type === "color" ? input.value :
-        key === "background-img" ? `url('${input.value}')` : input.value;
-      document.documentElement.style.setProperty(`--${key}`, val);
-      const theme = JSON.parse(localStorage.getItem("theme") || "{}");
-      theme[key] = val;
-      localStorage.setItem("theme", JSON.stringify(theme));
-    });
-  });
-
-  applyThemeFromStorage();
+loadTheme();
 </script>
 
 </body>
