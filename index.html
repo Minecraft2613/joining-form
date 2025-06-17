@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minecraft Joining Bonus</title>
   <style>
+    /* Center and expand input boxes with padding on both sides */
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 15px auto; /* centers horizontally */
+  display: block;
+}
+
     body {
       margin: 0;
       font-family: Arial, sans-serif;
@@ -117,16 +129,27 @@ input, select, textarea {
       border-radius: 5px;
     }
 
-    @media (max-width: 600px) {
-      input, select, textarea, button {
-        font-size: 16px;
-      }
+ /* Fix radio buttons to align horizontally */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 15px;
+}
 
-      .radio-group {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
+/* Smooth expanding transition for joinDetails section */
+#joinDetails {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+#joinDetails.show {
+  max-height: 500px; /* enough space for inner content */
+  padding-top: 10px;
+}
+
   </style>
 </head>
 <body>
@@ -212,9 +235,15 @@ input, select, textarea {
   <script>
     const webhookURL = "https://discordapp.com/api/webhooks/1384175324908093600/exW16D_efWe-KA20FdZDE6aOhKnq1AYuiCITMN4-DD3_KhUOWUIB-9RZpp04_-6P__fa";
 
-    function toggleJoinDetails(show) {
-      document.getElementById("joinDetails").classList.toggle("hidden", !show);
-    }
+  function toggleJoinDetails(show) {
+  const joinBox = document.getElementById("joinDetails");
+  if (show) {
+    joinBox.classList.add("show");
+  } else {
+    joinBox.classList.remove("show");
+  }
+}
+
 
     function checkRules() {
       const accepted = document.querySelector('input[name="acceptRules"]:checked')?.value;
